@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/post', 'HomeController@post')->name('post');
+
+Route::get('/register', 'RegisterNewController@register')->name('register');
+Route::post('/register', 'RegisterNewController@registerProcess');
