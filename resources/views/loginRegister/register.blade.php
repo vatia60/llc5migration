@@ -1,4 +1,4 @@
-@extends('layouts.loginmaster')
+@extends('layouts.master')
 @section('content')
 <div class="container home-height">
 <div class="row">
