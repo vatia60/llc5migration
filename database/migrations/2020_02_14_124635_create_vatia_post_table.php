@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewpostsTable extends Migration
+class CreateVatiaPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateNewpostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('newposts', function (Blueprint $table) {
+        Schema::create('vatia_post', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsingedInteger('user_id');
-            $table->unsingedInteger('category_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id');
             $table->string('title', 128);
             $table->longText('content');
             $table->string('thumbnail_path', 128);
             $table->string('status', 32)->default('draft');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('user')->onDelate('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateNewpostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newposts');
+        Schema::dropIfExists('vatia_post');
     }
 }
